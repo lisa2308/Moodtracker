@@ -22,11 +22,11 @@ public class MyAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return MainActivity.FragmentOne.newInstance(0, Color.WHITE);
+                return FragmentMood.newInstance(0, Color.WHITE);
             case 1:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return MainActivity.FragmentOne.newInstance(1, Color.CYAN);
+                return FragmentMood.newInstance(1, Color.CYAN);
             default:
                 return null;
         }

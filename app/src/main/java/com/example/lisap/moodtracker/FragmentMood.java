@@ -17,7 +17,7 @@ public class FragmentMood extends Fragment {
     private int mColor;
 
     // You can modify the parameters to pass in whatever you want
-    FragmentMood newInstance(int num, int color) {
+    public static FragmentMood newInstance(int num, int color) {
         FragmentMood f = new FragmentMood();
         Bundle args = new Bundle();
         args.putInt(MY_NUM_KEY, num);
