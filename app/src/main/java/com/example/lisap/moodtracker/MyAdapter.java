@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class MyAdapter extends FragmentPagerAdapter {
-    final int NUMBER_OF_PAGES = 2;
+    final int NUMBER_OF_PAGES = 5;
 
     public MyAdapter(FragmentManager fm) {
         super(fm);
