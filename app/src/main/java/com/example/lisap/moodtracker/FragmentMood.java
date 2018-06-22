@@ -10,17 +10,17 @@ import android.widget.TextView;
 
 public class FragmentMood extends Fragment {
 
-    private static final String MY_NUM_KEY = "num";
+    private static final String DRAWABLE = "image";
     private static final String MY_COLOR_KEY = "color";
 
-    private int mNum;
+    private int mImage;
     private int mColor;
 
     // You can modify the parameters to pass in whatever you want
-    public static FragmentMood newInstance(int num, int color) {
+    public static FragmentMood newInstance(int image, int color) {
         FragmentMood f = new FragmentMood();
         Bundle args = new Bundle();
-        args.putInt(MY_NUM_KEY, num);
+        args.putInt(DRAWABLE, image);
         args.putInt(MY_COLOR_KEY, color);
         f.setArguments(args);
         return f;
@@ -29,7 +29,7 @@ public class FragmentMood extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mNum = getArguments() != null ? getArguments().getInt(MY_NUM_KEY) : 0;
+        mImage= getArguments() != null ? getArguments().getInt(DRAWABLE) : 0;
         mColor = getArguments() != null ? getArguments().getInt(MY_COLOR_KEY) : Color.BLACK;
     }
 
@@ -39,7 +39,7 @@ public class FragmentMood extends Fragment {
         View v = inflater.inflate(R.layout.fragment_mood, container, false);
         v.setBackgroundColor(mColor);
         TextView textView = v.findViewById(R.id.textview);
-        textView.setText("Page " + mNum);
+        textView.setText("Page " + mImage);
         return v;
     }
 }

@@ -22,23 +22,23 @@ public class MyAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return FragmentMood.newInstance(0, Color."faded_red");
+                return FragmentMood.newInstance(0,R.color.faded_red);
             case 1:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(1, Color."warm_grey");
+                return FragmentMood.newInstance(1,R.color.warm_grey);
             case 2:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(2, Color."cornflower_blue_65");
+                return FragmentMood.newInstance(2, R.color.cornflower_blue_65);
             case 3:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(3, Color."light_sage");
+                return FragmentMood.newInstance(3, R.color.light_sage);
             case 4:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(4, Color."banana_yellow");
+                return FragmentMood.newInstance(4, R.color.banana_yellow);
 
             default:
                 return null;
