@@ -3,6 +3,7 @@ package com.example.lisap.moodtracker;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class FragmentMood extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_mood, container, false);
-        v.setBackgroundColor(mColor);
+        v.setBackgroundColor(ContextCompat.getColor(getContext(),mColor));
         TextView textView = v.findViewById(R.id.textview);
         textView.setText("Page " + mImage);
         return v;

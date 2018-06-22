@@ -22,7 +22,7 @@ public class MyAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return FragmentMood.newInstance(0,R.color.faded_red);
+                return FragmentMood.newInstance(R.drawable.smiley_disappointed,R.color.faded_red);
             case 1:
                 // return a different Fragment class here
                 // if you want want a completely different layout
