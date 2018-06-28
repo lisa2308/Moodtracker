@@ -26,19 +26,19 @@ public class MyAdapter extends FragmentPagerAdapter {
             case 1:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(1,R.color.warm_grey);
+                return FragmentMood.newInstance(R.drawable.smiley_sad,R.color.warm_grey);
             case 2:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(2, R.color.cornflower_blue_65);
+                return FragmentMood.newInstance(R.drawable.smiley_normal, R.color.cornflower_blue_65);
             case 3:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(3, R.color.light_sage);
+                return FragmentMood.newInstance(R.drawable.smiley_happy, R.color.light_sage);
             case 4:
                 // return a different Fragment class here
                 // if you want want a completely different layout
-                return FragmentMood.newInstance(4, R.color.banana_yellow);
+                return FragmentMood.newInstance(R.drawable.smiley_super_happy, R.color.banana_yellow);
 
             default:
                 return null;
