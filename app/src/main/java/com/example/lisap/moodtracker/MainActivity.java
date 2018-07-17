@@ -18,5 +18,5 @@ public class MainActivity extends AppCompatActivity {
         mPager = findViewById(R.id.viewpager);
         mPager.setAdapter(mAdapter);
     }
-
+    //sharedPreferences preferences = getSharedPreferences("nom fichier", MODE_PRIVATE);
 }

@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FragmentMood extends Fragment {
@@ -30,8 +31,18 @@ public class FragmentMood extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mImage= getArguments() != null ? getArguments().getInt(DRAWABLE) : 0;
-        mColor = getArguments() != null ? getArguments().getInt(MY_COLOR_KEY) : Color.BLACK;
+        if(getArguments() != null){
+            mImage = getArguments().getInt(DRAWABLE);
+        }
+        else{
+            mImage = 0;
+        }
+        if(getArguments() !=null){
+            mColor = getArguments().getInt(MY_COLOR_KEY);
+        }
+        else {
+            mColor = Color.BLACK;
+        }
     }
 
     @Override
@@ -39,8 +50,8 @@ public class FragmentMood extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_mood, container, false);
         v.setBackgroundColor(ContextCompat.getColor(getContext(),mColor));
-        TextView textView = v.findViewById(R.id.textview);
-        textView.setText("Page " + mImage);
+        ImageView smiley = v.findViewById(R.id.image);
+        smiley.setImageDrawable(ContextCompat.getDrawable(getContext(),mImage));
         return v;
     }
 }
