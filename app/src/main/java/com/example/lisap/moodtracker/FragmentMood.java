@@ -1,14 +1,20 @@
 package com.example.lisap.moodtracker;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FragmentMood extends Fragment {
 
@@ -17,6 +23,7 @@ public class FragmentMood extends Fragment {
 
     private int mImage;
     private int mColor;
+    private ImageView comment;
 
     // You can modify the parameters to pass in whatever you want
     public static FragmentMood newInstance(int image, int color) {
@@ -43,7 +50,9 @@ public class FragmentMood extends Fragment {
         else {
             mColor = Color.BLACK;
         }
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +61,34 @@ public class FragmentMood extends Fragment {
         v.setBackgroundColor(ContextCompat.getColor(getContext(),mColor));
         ImageView smiley = v.findViewById(R.id.image);
         smiley.setImageDrawable(ContextCompat.getDrawable(getContext(),mImage));
+
+        comment = v.findViewById(R.id.fragment_mood_img_comment);
+        comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                final EditText edittext = new EditText(getContext());
+                alert.setMessage("Enter Your Message");
+                alert.setTitle("Enter Your Title");
+
+                alert.setView(edittext);
+
+                alert.setPositiveButton("Yes Option", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String youEditTextValue = edittext.getText().toString();
+                        Toast.makeText(getContext(), youEditTextValue, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alert.setNegativeButton("No Option", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // what ever you want to do with No option.
+                    }
+                });
+
+                alert.show();
+            }
+        });
         return v;
     }
 }
