@@ -2,6 +2,7 @@ package com.example.lisap.moodtracker;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,14 +17,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class FragmentMood extends Fragment {
 
     private static final String DRAWABLE = "image";
     private static final String MY_COLOR_KEY = "color";
+    private static final String PREF_KEY_MOOD = "PREF_KEY_MOOD";
+    private static final String PREF_KEY_COMMENT = "PREF_KEY_COMMENT";
 
     private int mImage;
     private int mColor;
     private ImageView comment;
+    private SharedPreferences mPreferences;
 
     // You can modify the parameters to pass in whatever you want
     public static FragmentMood newInstance(int image, int color) {
@@ -51,6 +57,8 @@ public class FragmentMood extends Fragment {
             mColor = Color.BLACK;
         }
 
+        mPreferences = getPreferences(MODE_PRIVATE);
+
     }
 
 
@@ -68,21 +76,24 @@ public class FragmentMood extends Fragment {
             public void onClick(View v){
                 AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
                 final EditText edittext = new EditText(getContext());
-                alert.setMessage("Enter Your Message");
-                alert.setTitle("Enter Your Title");
+                alert.setMessage("Commentaire");
+                alert.setTitle("Moodtracker");
 
                 alert.setView(edittext);
 
-                alert.setPositiveButton("Yes Option", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         String youEditTextValue = edittext.getText().toString();
                         Toast.makeText(getContext(), youEditTextValue, Toast.LENGTH_SHORT).show();
+                        mPreferences.edit().putString("PREF_KEY_COMMENT",null).apply();
                     }
                 });
 
-                alert.setNegativeButton("No Option", new DialogInterface.OnClickListener() {
+                alert.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         // what ever you want to do with No option.
+
+                        mPreferences.edit().putInt("PREF_KEY_MOOD",0).apply();
                     }
                 });
 
