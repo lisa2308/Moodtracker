@@ -17,13 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentMood extends Fragment {
 
     private static final String DRAWABLE = "image";
     private static final String MY_COLOR_KEY = "color";
-    private static final String PREF_KEY_MOOD = "PREF_KEY_MOOD";
     private static final String PREF_KEY_COMMENT = "PREF_KEY_COMMENT";
 
     private int mImage;
@@ -57,7 +58,7 @@ public class FragmentMood extends Fragment {
             mColor = Color.BLACK;
         }
 
-        mPreferences = getPreferences(MODE_PRIVATE);
+        mPreferences = getActivity().getPreferences(MODE_PRIVATE);
 
     }
 
@@ -83,9 +84,19 @@ public class FragmentMood extends Fragment {
 
                 alert.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        String youEditTextValue = edittext.getText().toString();
-                        Toast.makeText(getContext(), youEditTextValue, Toast.LENGTH_SHORT).show();
-                        mPreferences.edit().putString("PREF_KEY_COMMENT",null).apply();
+                        String userInput = edittext.getText().toString();
+                        Toast.makeText(getContext(), userInput, Toast.LENGTH_SHORT).show();
+
+                        Calendar cal = Calendar.getInstance();
+
+                        int day = Calendar.getInstance().get(Calendar.DATE);
+                        int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+                        int year =  Calendar.getInstance().get(Calendar.YEAR);
+
+                        String date = day + "" + month + "" + year;
+                        Log.e("tag",day+"");
+
+                        mPreferences.edit().putString(PREF_KEY_COMMENT,userInput).apply();
                     }
                 });
 
@@ -93,7 +104,6 @@ public class FragmentMood extends Fragment {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         // what ever you want to do with No option.
 
-                        mPreferences.edit().putInt("PREF_KEY_MOOD",0).apply();
                     }
                 });
 
