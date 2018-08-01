@@ -2,6 +2,7 @@ package com.example.lisap.moodtracker;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class FragmentMood extends Fragment {
     private int mImage;
     private int mColor;
     private ImageView comment;
+    private ImageView historic;
     private SharedPreferences mPreferences;
 
     // You can modify the parameters to pass in whatever you want
@@ -110,6 +112,17 @@ public class FragmentMood extends Fragment {
                 alert.show();
             }
         });
+
+        historic = v.findViewById(R.id.fragment_mood_img_historic);
+        historic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), HistoricActivity.class);
+                getActivity().startActivity(myIntent);
+
+            }
+        });
+
         return v;
     }
 }
