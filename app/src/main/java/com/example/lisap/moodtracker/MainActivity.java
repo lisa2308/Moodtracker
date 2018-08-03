@@ -31,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                Calendar cal = Calendar.getInstance();
-                cal.add(Calendar.DATE,-2);
-                Log.e("tag", Calendar.getInstance().get(Calendar.MONTH)+"");
-                Log.e("tag",cal.get(Calendar.DATE)+"");
+                int day = Calendar.getInstance().get(Calendar.DATE);
+                int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+                int year =  Calendar.getInstance().get(Calendar.YEAR);
 
-                mPreferences.edit().putInt(PREF_KEY_MOOD,position).apply();
+                String date = day + "" + month + "" + year;
+
+                mPreferences.edit().putInt(date+PREF_KEY_MOOD,position).apply();
             }
             @Override
             public void onPageSelected(int position) {}

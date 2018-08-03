@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -14,36 +15,40 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android android:text="Il y'a une semaine"/>
+            android:text="Il y'a une semaine" />
 
         <ImageView
-            android:id=""
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_comment_black_48px"/>
+
+
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/banana_yellow"
-        android:tooltipText="jaj">
+        android:background="@color/banana_yellow">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android android:text="Il y'a six jours"/>
+            android:text="Il y'a six jours"/>
 
         <ImageView
             android:id="@+id/fragment_mood_img_comment"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_comment_black_48px"/>
-
-        <TextView
-            android:layout_width=""
-            android:layout_height="" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -56,12 +61,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android android:text="Il y'a cing jours"/>
+            android:text="Il y'a cing jours"/>
 
         <ImageView
-            android:id=""
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_comment_black_48px"/>
 
     </android.support.constraint.ConstraintLayout>
@@ -75,12 +83,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android android:text="Il y'a quatre jours"/>
+            android:text="Il y'a quatre jours"/>
 
         <ImageView
-            android:id=""
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_comment_black_48px"/>
 
     </android.support.constraint.ConstraintLayout>
@@ -94,12 +105,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android android:text="Il y'a trois jours"/>
+            android:text="Il y'a trois jours"/>
 
         <ImageView
-            android:id=""
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_comment_black_48px"/>
     </android.support.constraint.ConstraintLayout>
 
@@ -112,12 +126,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android android:text="Avant hier"/>
+            android:text="Avant hier"/>
 
         <ImageView
-            android:id=""
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_comment_black_48px"/>
 
     </android.support.constraint.ConstraintLayout>
@@ -129,14 +146,18 @@
         android:background="@color/banana_yellow">
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android android:text="Hier"/>
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Hier" />
 
         <ImageView
-            android:id=""
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_comment_black_48px"/>
 
     </android.support.constraint.ConstraintLayout>

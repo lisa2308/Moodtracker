@@ -89,16 +89,14 @@ public class FragmentMood extends Fragment {
                         String userInput = edittext.getText().toString();
                         Toast.makeText(getContext(), userInput, Toast.LENGTH_SHORT).show();
 
-                        Calendar cal = Calendar.getInstance();
 
                         int day = Calendar.getInstance().get(Calendar.DATE);
                         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
                         int year =  Calendar.getInstance().get(Calendar.YEAR);
 
                         String date = day + "" + month + "" + year;
-                        Log.e("tag",day+"");
 
-                        mPreferences.edit().putString(PREF_KEY_COMMENT,userInput).apply();
+                        mPreferences.edit().putString(date+PREF_KEY_COMMENT,userInput).apply();
                     }
                 });
 
