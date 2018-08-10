@@ -2,6 +2,7 @@ package com.example.lisap.moodtracker;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mPager = findViewById(R.id.viewpager);
         mPager.setAdapter(mAdapter);
-        mPreferences = getPreferences(MODE_PRIVATE);
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
