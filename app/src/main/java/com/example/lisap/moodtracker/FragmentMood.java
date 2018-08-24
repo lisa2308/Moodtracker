@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
@@ -60,7 +62,7 @@ public class FragmentMood extends Fragment {
             mColor = Color.BLACK;
         }
 
-        mPreferences = getActivity().getPreferences(MODE_PRIVATE);
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
     }
 
@@ -82,12 +84,22 @@ public class FragmentMood extends Fragment {
                 alert.setMessage("Commentaire");
                 alert.setTitle("Moodtracker");
 
+
+
                 alert.setView(edittext);
 
                 alert.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         String userInput = edittext.getText().toString();
                         Toast.makeText(getContext(), userInput, Toast.LENGTH_SHORT).show();
+                        final MediaPlayer mp = MediaPlayer.create(getContext(),R.raw.sound);
+                        comment.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mp.start();
+                            }
+
+                        });
 
 
                         int day = Calendar.getInstance().get(Calendar.DATE);
