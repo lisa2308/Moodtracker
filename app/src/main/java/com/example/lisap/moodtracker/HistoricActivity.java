@@ -35,6 +35,7 @@ public class HistoricActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.historic_activity);
 
+ //DAY OF WEEK //
         cl1 = findViewById(R.id.historic_activity_background1);
         cl2 = findViewById(R.id.historic_activity_background2);
         cl3 = findViewById(R.id.historic_activity_background3);
@@ -51,6 +52,7 @@ public class HistoricActivity extends AppCompatActivity {
         backgroundList.add(cl6);
         backgroundList.add(cl7);
 
+// IMAGE COMMENT //
         img1 = findViewById(R.id.historic_activity_img1);
         img2 = findViewById(R.id.historic_activity_img2);
         img3 = findViewById(R.id.historic_activity_img3);
@@ -71,6 +73,7 @@ public class HistoricActivity extends AppCompatActivity {
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+//HISTORIC OF MOOD FOR THE WEEK //
         Calendar cal = Calendar.getInstance();
         for (int i=0; i<7;i++) {
 
@@ -89,7 +92,7 @@ public class HistoricActivity extends AppCompatActivity {
             Log.e("comment", comment);
             Log.e("date",date);
 
-
+// MOOD'S COLOR //
             switch (mood) {
                 case 0: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.faded_red)); break;
                 case 1: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.warm_grey)); break;

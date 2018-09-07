@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
    private SharedPreferences mPreferences;
    private static final String PREF_KEY_MOOD = "PREF_KEY_MOOD";
 
-
+// VERTICAL SLIDE //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +43,15 @@ public class MainActivity extends AppCompatActivity {
                 mPreferences.edit().putInt(date+PREF_KEY_MOOD,position).apply();
             }
             @Override
-            public void onPageSelected(int position) {}
+            public void onPageSelected(int position) {
+                Log.e("OnPageSelected",position +" ");
+            }
+
             @Override
-            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrollStateChanged(int state) {
+                Log.e("Onpagescroll",state +" ");
+            }
         });
 
     }
-    //sharedPreferences preferences = getSharedPreferences("nom fichier", MODE_PRIVATE);
 }
