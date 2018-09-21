@@ -19,7 +19,7 @@ import java.util.List;
 public class HistoricActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
 
-
+    // SHAREDPREFERENCIES KEY //
     private static final String PREF_KEY_MOOD ="PREF_KEY_MOOD";
     private static final String PREF_KEY_COMMENT ="PREF_KEY_COMMENT";
 
@@ -29,13 +29,12 @@ public class HistoricActivity extends AppCompatActivity {
     List<ConstraintLayout> backgroundList = new ArrayList<>();
     List<ImageView> commentImageList = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.historic_activity);
 
- //DAY OF WEEK //
+        //DAY OF WEEK //
         cl1 = findViewById(R.id.historic_activity_background1);
         cl2 = findViewById(R.id.historic_activity_background2);
         cl3 = findViewById(R.id.historic_activity_background3);
@@ -52,7 +51,7 @@ public class HistoricActivity extends AppCompatActivity {
         backgroundList.add(cl6);
         backgroundList.add(cl7);
 
-// IMAGE COMMENT //
+        // IMAGE COMMENT //
         img1 = findViewById(R.id.historic_activity_img1);
         img2 = findViewById(R.id.historic_activity_img2);
         img3 = findViewById(R.id.historic_activity_img3);
@@ -69,14 +68,13 @@ public class HistoricActivity extends AppCompatActivity {
         commentImageList.add(img6);
         commentImageList.add(img7);
 
-
-
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-//HISTORIC OF MOOD FOR THE WEEK //
+        //HISTORIC OF MOOD FOR THE WEEK //
         Calendar cal = Calendar.getInstance();
         for (int i=0; i<7;i++) {
 
+            //ON ENLEVE UN JOUR A LA DATE//
             cal.add(Calendar.DATE, -1);
 
             int day = cal.get(Calendar.DATE);
@@ -88,11 +86,12 @@ public class HistoricActivity extends AppCompatActivity {
             int mood = mPreferences.getInt(date+PREF_KEY_MOOD, -1);
             final String comment = mPreferences.getString(date+PREF_KEY_COMMENT, "default value");
 
+            //AFFICHER DANS LOGCAT//
             Log.e("mood", mood + "");
             Log.e("comment", comment);
             Log.e("date",date);
 
-// MOOD'S COLOR //
+            // MOOD'S COLOR //
             switch (mood) {
                 case 0: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.faded_red)); break;
                 case 1: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.warm_grey)); break;
@@ -111,12 +110,9 @@ public class HistoricActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(HistoricActivity.this, comment, Toast.LENGTH_SHORT).show();
-
-
-                    }
+                        }
                 });
             }
         }
     }
-
 }

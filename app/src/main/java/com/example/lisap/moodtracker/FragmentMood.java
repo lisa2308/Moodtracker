@@ -30,8 +30,6 @@ public class FragmentMood extends Fragment {
     private static final String DRAWABLE = "image";
     private static final String MY_COLOR_KEY = "color";
     private static final String PREF_KEY_COMMENT = "PREF_KEY_COMMENT";
-    private static final String SharedPreferences = "SHARED_PREFERENCIES";
-    private static final String PREF_KEY_MOOD = "PREF_KEY_MOOD"
 
     private int mImage;
     private int mColor;
@@ -40,6 +38,7 @@ public class FragmentMood extends Fragment {
     private ImageView historic;
     private SharedPreferences mPreferences;
 
+    // PASS DATA TO CONSTRUCTOR //
     public static FragmentMood newInstance(int image, int color) {
         FragmentMood f = new FragmentMood();
         Bundle args = new Bundle();
@@ -48,7 +47,8 @@ public class FragmentMood extends Fragment {
         f.setArguments(args);
         return f;
     }
-// SELECT MOOD //
+
+    // SELECT MOOD //
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +59,6 @@ public class FragmentMood extends Fragment {
             mImage = 0;
             mColor = Color.BLACK;
         }
-
         mPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
     }
 
@@ -71,7 +70,7 @@ public class FragmentMood extends Fragment {
         ImageView smiley = v.findViewById(R.id.image);
         smiley.setImageDrawable(ContextCompat.getDrawable(getContext(), mImage));
 
- // TO ADD COMMENT //
+        // TO ADD COMMENT //
         comment = v.findViewById(R.id.fragment_mood_img_comment);
         comment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +86,6 @@ public class FragmentMood extends Fragment {
                         String userInput = edittext.getText().toString();
                         Toast.makeText(getContext(), userInput, Toast.LENGTH_SHORT).show();
 
-
                         int day = Calendar.getInstance().get(Calendar.DATE);
                         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
                         int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -99,29 +97,24 @@ public class FragmentMood extends Fragment {
                 });
 
                 alert.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // what ever you want to do with No option.
-
-                    }
+                    public void onClick(DialogInterface dialog, int whichButton) {}
                 });
 
                 alert.show();
             }
         });
 
- //TO GO TO HISTORIC PAGE //
+        //TO GO TO HISTORIC PAGE //
         historic = v.findViewById(R.id.fragment_mood_img_historic);
         historic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(getActivity(), HistoricActivity.class);
                 getActivity().startActivity(myIntent);
-
-
             }
         });
 
-// TO SHARE MOOD IN EMAIL //
+        // TO SHARE MOOD IN EMAIL //
         share = v.findViewById(R.id.fragment_mood_img_sharemood);
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,23 +131,36 @@ public class FragmentMood extends Fragment {
 
                         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                                 "mailto",userInput, null));
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Humeur du jour");
-                        emailIntent.putExtra(PREF_KEY_MOOD,"PREF_KEY_MOOD");
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Humeur du jour by Moodtracker");
                         emailIntent.putExtra(Intent.EXTRA_EMAIL, userInput);
-                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                        if(mColor== R.color.faded_red){
+                            emailIntent.putExtra(Intent.EXTRA_TEXT,"Je suis de très mauvaise humeur aujourd'hui");
+                        }
+                        else if(mColor== R.color.warm_grey){
+                            emailIntent.putExtra(Intent.EXTRA_TEXT,"Je ne suis pas de bonne humeur aujourd'hui ");
+                        }
+                        else if(mColor== R.color.cornflower_blue_65){
+                            emailIntent.putExtra(Intent.EXTRA_TEXT,"Je suis d'humeur moyenne aujourd'hui");
+                        }
+                        else if(mColor== R.color.light_sage){
+                            emailIntent.putExtra(Intent.EXTRA_TEXT,"Je suis de bonne humeur aujourd'hui");
+                        }
+                        else if(mColor== R.color.banana_yellow){
+                            emailIntent.putExtra(Intent.EXTRA_TEXT,"Je suis de très bonne humeur aujourd'hui");
+                        }
 
+                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
                     }
                 });
 
                 alert.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // what ever you want to do with No option.
-                    }
+                    public void onClick(DialogInterface dialog, int whichButton) {}
+
                 });
                 alert.show();
             }
         });
 
         return v;
-
-    }}
+    }
+}

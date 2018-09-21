@@ -23,12 +23,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mPager = findViewById(R.id.viewpager);
         mPager.setAdapter(mAdapter);
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+
+        int day = cal.get(Calendar.DATE);
+        int month = cal.get(Calendar.MONTH) + 1;
+        int year = cal.get(Calendar.YEAR);
+
+        String date = day + "" + month + "" + year;
+        int mood = mPreferences.getInt(date + PREF_KEY_MOOD, 0);
+
+        mPager.setCurrentItem(mood);
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
