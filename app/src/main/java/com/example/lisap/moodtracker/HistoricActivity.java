@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -33,6 +34,10 @@ public class HistoricActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.historic_activity);
+
+        //1/5 de la largeur d'écran//
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int width = displayMetrics.widthPixels / 5;
 
         //DAY OF WEEK //
         cl1 = findViewById(R.id.historic_activity_background1);
@@ -93,13 +98,31 @@ public class HistoricActivity extends AppCompatActivity {
 
             // MOOD'S COLOR //
             switch (mood) {
-                case 0: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.faded_red)); break;
-                case 1: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.warm_grey)); break;
-                case 2: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.cornflower_blue_65)); break;
-                case 3: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.light_sage)); break;
-                case 4: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.banana_yellow)); break;
+                case 0:
+                    backgroundList.get(i).getLayoutParams().width = width;
+                    backgroundList.get(i).requestLayout();
+                    backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.faded_red));
+                    break;
+                case 1:
+                    backgroundList.get(i).getLayoutParams().width = width * 2;
+                    backgroundList.get(i).requestLayout();
+                    backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.warm_grey));
+                    break;
+                case 2:
+                    backgroundList.get(i).getLayoutParams().width = width * 3;
+                    backgroundList.get(i).requestLayout();
+                    backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.cornflower_blue_65));
+                    break;
+                case 3:
+                    backgroundList.get(i).getLayoutParams().width = width * 4;
+                    backgroundList.get(i).requestLayout();
+                    backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.light_sage));
+                    break;
+                case 4: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.banana_yellow));break;
 
-                case -1: backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.white)); break;
+                case -1:
+                    backgroundList.get(i).setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+                    break;
             }
 
             if(comment.equals("default value")){
